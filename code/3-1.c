@@ -39,7 +39,7 @@ int main() {
             for( p = head; p != NULL; p = p->next){
                 printf("%s %d\n", p->name, p->score);
             }
-        }else{
+        }else if(strcmp(oder, "delete")==0){
             scanf("%s", name);
             struct Node *p;
             if(strcmp(head->name, name)==0){
@@ -49,6 +49,11 @@ int main() {
                 if(strcmp((p->next)->name, name)==0){
                     p->next = (p->next)->next; 
                 }
+            }
+        }else{
+            struct Node *p = head;
+            for(; p!=NULL; p = p->next){
+                free(p);
             }
         }
     }
