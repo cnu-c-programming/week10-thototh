@@ -14,7 +14,7 @@ int main() {
     int score;
     struct Node *head = NULL;
     struct Node *newNode = NULL;
-    struct Node *tail;
+    struct Node *tail = NULL;
 
     while(1){
         scanf("%s", oder);
@@ -41,24 +41,39 @@ int main() {
             }
         }else if(strcmp(oder, "delete")==0){
             scanf("%s", name);
-            struct Node *p;
-            if(strcmp(head->name, name)==0){
+
+            if(head == NULL) continue;
+
+
+            if(strcmp(head->name, name) == 0){
+                struct Node *temp = head;
                 head = head->next;
+                if(head == NULL) tail = NULL;
+                free(temp);
+                continue;
             }
-            for(p = head; p != NULL; p = p->next){
-                if(strcmp((p->next)->name, name)==0){
-                    p->next = (p->next)->next; 
+
+            struct Node *p = head;
+            while(p->next != NULL){
+                if(strcmp(p->next->name, name) == 0){
+                    struct Node *temp = p->next;
+                    p->next = temp->next;
+                    if(temp == tail) tail = p;
+                    free(temp);
+                    break;
                 }
+                p = p->next;
             }
+        
         }else{
             struct Node *p = head;
-            struct Node *temp;
+            struct Node *temp = NULL;
             while(p!=NULL){
                 temp = p->next;
                 free(p);
                 p = temp;
             }
         }
-    }
     return 0;
+    }
 }
