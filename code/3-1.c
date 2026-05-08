@@ -73,7 +73,7 @@ int main() {
                 free(p);
                 p = temp;
             }
+            break;
         }
-    return 0;
     }
 }
