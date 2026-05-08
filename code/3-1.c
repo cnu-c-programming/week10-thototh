@@ -52,8 +52,11 @@ int main() {
             }
         }else{
             struct Node *p = head;
-            for(; p!=NULL; p = p->next){
+            struct Node *temp;
+            while(p!=NULL){
+                temp = p->next;
                 free(p);
+                p = temp;
             }
         }
     }
