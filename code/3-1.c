@@ -21,7 +21,7 @@ int main() {
 
         if(strcmp(oder, "add") == 0){
             scanf("%s %d",name, &score);
-            newNode = malloc(sizeof(struct Node));
+            newNode = (struct Node*)malloc(sizeof(struct Node));
             strcpy(newNode->name, name);
             newNode -> score = score;
             newNode -> next = NULL;
